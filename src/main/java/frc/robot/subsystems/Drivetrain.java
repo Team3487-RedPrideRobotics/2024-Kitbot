@@ -25,19 +25,19 @@ public class Drivetrain extends SubsystemBase {
     
     public Drivetrain() {
 
-        left_Back_Motor = new Spark(Constants.DriveConstants.left_Back_Motor_ID);
+        left_Back_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
     
 
-        left_Front_Motor = new Spark(Constants.DriveConstants.left_Front_Motor_ID);
+        left_Front_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
 
 
         leftDrive = new MotorControllerGroup(left_Front_Motor, left_Back_Motor);
         
 
-        right_Back_Motor = new Spark(Constants.DriveConstants.right_Back_Motor_ID);
+        right_Back_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
 
 
-        right_Front_Motor = new Spark(Constants.DriveConstants.right_Front_Motor_ID);
+        right_Front_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
 
 
         rightDrive = new MotorControllerGroup(right_Back_Motor, right_Front_Motor);
@@ -51,7 +51,7 @@ public class Drivetrain extends SubsystemBase {
 
     }
 
-    public void tankDrive(double leftSpeed, double rightSpeed){
+    public void TankDrive(double leftSpeed, double rightSpeed){
         differentialDrive.tankDrive(leftSpeed, rightSpeed, false);
     }
 
