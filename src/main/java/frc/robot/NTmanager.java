@@ -1,10 +1,6 @@
 
 package frc.robot;
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 import edu.wpi.first.networktables.BooleanPublisher;
 import edu.wpi.first.networktables.BooleanSubscriber;
 import edu.wpi.first.networktables.DoublePublisher;

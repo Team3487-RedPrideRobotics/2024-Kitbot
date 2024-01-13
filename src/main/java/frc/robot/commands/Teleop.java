@@ -4,11 +4,7 @@ package frc.robot.commands;
 
 
 import edu.wpi.first.wpilibj.XboxController;
-<<<<<<< Updated upstream
-import edu.wpi.first.wpilibj2.command.CommandBase;
-=======
 import edu.wpi.first.wpilibj2.command.Command;
->>>>>>> Stashed changes
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooty;

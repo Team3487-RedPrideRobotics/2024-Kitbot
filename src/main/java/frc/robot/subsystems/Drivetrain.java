@@ -26,11 +26,7 @@ public class Drivetrain extends SubsystemBase {
     public Drivetrain() {
 
         left_Back_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
-<<<<<<< Updated upstream
-        //left_Back_Moter.setInverted(Constants.DriveEdits.left_Drive_Inverse);
-=======
         left_Back_Motor.setInverted(Constants.DriveEdits.left_Drive_Inverse);
->>>>>>> Stashed changes
 
         left_Front_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
         left_Front_Motor.setInverted(Constants.DriveEdits.left_Drive_Inverse);
