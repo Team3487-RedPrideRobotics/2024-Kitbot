@@ -7,6 +7,8 @@ public class Constants {
     }
     public static class Intake{
         public static final int intake_Motor_ID = 2;
+        public static double IntakeSpeed = 0.8;
+        public static double ShootSpeed = 0.8;
     }
 
     public static class DriveEdits{
@@ -15,6 +17,3 @@ public class Constants {
 		public static double DriveSpeed = 0.8;
     }
 }
-
-//0 and 1 are right
-//2 and 3 are left
