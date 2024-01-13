@@ -4,7 +4,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 
     
@@ -13,11 +12,11 @@ public class Drivetrain extends SubsystemBase {
     
     private Spark left_Back_Motor;
     private Spark left_Front_Motor;
-    private MotorControllerGroup leftDrive;
+
 
     private Spark right_Back_Motor;
     private Spark right_Front_Motor;
-    private MotorControllerGroup rightDrive;
+   
 
     private DifferentialDrive differentialDrive;
 
@@ -31,7 +30,7 @@ public class Drivetrain extends SubsystemBase {
         left_Front_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
         left_Front_Motor.setInverted(Constants.DriveEdits.left_Drive_Inverse);
 
-        leftDrive = new MotorControllerGroup(left_Front_Motor, left_Back_Motor);
+        left_Back_Motor.addFollower(left_Front_Motor);
         
 
         right_Back_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
@@ -41,10 +40,10 @@ public class Drivetrain extends SubsystemBase {
         right_Front_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
         right_Front_Motor.setInverted(Constants.DriveEdits.right_Drive_Inverse);
 
-        rightDrive = new MotorControllerGroup(right_Back_Motor, right_Front_Motor);
+        right_Back_Motor.addFollower(right_Front_Motor);
         
 
-        differentialDrive = new DifferentialDrive(leftDrive, rightDrive);
+        differentialDrive = new DifferentialDrive(left_Back_Motor, right_Back_Motor);
         differentialDrive.setSafetyEnabled(true);
         differentialDrive.setExpiration(0.1);
         differentialDrive.setMaxOutput(1.0);
