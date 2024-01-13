@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
 
 public class Shooty extends SubsystemBase {
 
+
 private Spark intakeMotorOne;
 private Spark intakeMotorTwo;
 
@@ -32,9 +33,15 @@ private Spark intakeMotorTwo;
 
     
     public void intake(double speed){
-        intakeMotorOne.set(speed);
-        intakeMotorTwo.set(speed);
+        intakeMotorOne.set(speed * Constants.Intake.IntakeSpeed);
+        intakeMotorTwo.set(speed * Constants.Intake.IntakeSpeed);
     }
+
+    public void shoot(double speed){
+        intakeMotorOne.set(speed * Constants.Intake.ShootSpeed);
+        intakeMotorTwo.set(speed * Constants.Intake.ShootSpeed);
+    }
+
 
     
     @Override
