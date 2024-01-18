@@ -41,20 +41,23 @@ public class Teleop extends Command {
 
 
         //drive code, no sprinting just get good
-        if(drive_controller.getLeftY() >= 0.05 || drive_controller.getRightY() >= 0.05) {
-            m_drive.TankDrive(drive_controller.getLeftY(), drive_controller.getRightY());
+        if(drive_controller.getLeftY() >= 0.05 || drive_controller.getLeftY() <= -0.05 || 
+        drive_controller.getRightY() >= 0.05 || drive_controller.getRightY() <= -0.05)
+        {
+            m_drive.TankDrive(drive_controller.getLeftY(), drive_controller.getRightY()); 
         }
+
 
 
         //intake code 
         //right trigger is shoot at max speed
         if(operator_Controller.getRightTriggerAxis() >= 0.01){
-            m_intake.shoot(1);
+            m_intake.shoot(operator_Controller.getRightTriggerAxis());
         }
 
         //left trigger is intake;
         if(operator_Controller.getLeftTriggerAxis() >= 0.01){
-            m_intake.intake(-1);
+            m_intake.intake(-1 * operator_Controller.getLeftTriggerAxis());
         }
 
 

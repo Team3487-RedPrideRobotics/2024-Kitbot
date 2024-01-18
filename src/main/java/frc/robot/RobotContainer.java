@@ -95,6 +95,9 @@ public XboxController getOperatorController() {
     // The selected command will be run in autonomous
     return m_chooser.getSelected();
   }
+  public Command getTeleopCommand() {
+    return m_Teleop;
+  }
   
 
 }

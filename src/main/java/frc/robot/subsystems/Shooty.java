@@ -23,23 +23,25 @@ public class Shooty extends SubsystemBase {
 
 
 private Spark intakeMotorOne;
-private Spark intakeMotorTwo;
+//private Spark intakeMotorTwo;
 
     public Shooty() {
         intakeMotorOne = new Spark(Constants.Intake.intake_Motor_ID);
-        intakeMotorTwo = new Spark(Constants.Intake.intake_Motor_ID);
+        //intakeMotorTwo = new Spark(Constants.Intake.intake_Motor_ID);
 
+        intakeMotorOne.setSafetyEnabled(true);
+        intakeMotorOne.setExpiration(0.1);
     }
 
     
     public void intake(double speed){
         intakeMotorOne.set(speed * Constants.Intake.IntakeSpeed);
-        intakeMotorTwo.set(speed * Constants.Intake.IntakeSpeed);
+
     }
 
     public void shoot(double speed){
-        intakeMotorOne.set(speed * Constants.Intake.ShootSpeed);
-        intakeMotorTwo.set(speed * Constants.Intake.ShootSpeed);
+        intakeMotorOne.set(speed * Constants.Intake.IntakeSpeed);
+
     }
 
 
