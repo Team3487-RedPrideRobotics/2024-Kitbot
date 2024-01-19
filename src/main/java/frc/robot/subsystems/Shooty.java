@@ -45,20 +45,20 @@ private Timer timer;
 
     public void shoot(){
         var currentTime = timer.get();
-        topShoot(1);
-        System.out.println("Start time: " + startRamp);
-        System.out.println("Current time: " + currentTime);
+        topShoot(1*Constants.Intake.IntakeSpeed);
+        //System.out.println("Start time: " + startRamp);
+        //System.out.println("Current time: " + currentTime);
         if(0 == startRamp) {
             startRamp = currentTime;
         }
             
         if(currentTime - startRamp  >= Constants.Intake.waitingNumber){
-            intakeMotorBottom.set(-1);
+            intakeMotorBottom.set(1*Constants.Intake.IntakeSpeed);
         }
     }  
     
     public void topShoot(double speed){
-        intakeMotorTop.set(-speed * Constants.Intake.IntakeSpeed);
+        intakeMotorTop.set(speed * Constants.Intake.IntakeSpeed);
     }
     public void bottomShoot(double speed){
         intakeMotorBottom.set(-speed * Constants.Intake.IntakeSpeed);

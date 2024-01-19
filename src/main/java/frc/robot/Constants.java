@@ -10,7 +10,7 @@ public class Constants {
         public static final int intake_Motor_ID_Bottom = 3;
         public static double IntakeSpeed = 1;
         public static double ShootSpeed = 1;
-        public static final double waitingNumber = 1;
+        public static final double waitingNumber = 3;
     }
 
     public static class DriveEdits{
