@@ -6,8 +6,10 @@ import edu.wpi.first.networktables.BooleanSubscriber;
 import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.DoubleSubscriber;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.Constants;
-
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Shooty;
 
 public class NTmanager {
   
@@ -19,6 +21,9 @@ public class NTmanager {
 
     public static DoublePublisher ShootSpeedPub;
     public static DoubleSubscriber ShootSpeedSub;
+
+    public static DoublePublisher TimerPub;
+    public static DoubleSubscriber TimerSub;
 
     public static void initialize(){
       var networkTable = NetworkTableInstance.getDefault();
@@ -37,6 +42,12 @@ public class NTmanager {
       ShootSpeedPub = ShootSpeedTopic.publish();
       ShootSpeedPub.setDefault(Constants.Intake.ShootSpeed);
       ShootSpeedSub = ShootSpeedTopic.subscribe(Constants.Intake.ShootSpeed);
+
+      var TimerTopic = networkTable.getDoubleTopic("Timer");
+      TimerPub = TimerTopic.publish();
+      TimerPub.setDefault(Shooty.currentTime);
+      TimerSub = TimerTopic.subscribe(Shooty.currentTime);
+
     }
 }
 

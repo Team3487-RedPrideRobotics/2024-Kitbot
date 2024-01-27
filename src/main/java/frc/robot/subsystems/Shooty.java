@@ -15,6 +15,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.NTmanager;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
@@ -26,6 +27,7 @@ private Spark intakeMotorTop;
 private Spark intakeMotorBottom;
 private double startRamp;
 private Timer timer;
+public static double currentTime = 0;
 
 
     public Shooty() {
@@ -43,8 +45,9 @@ private Timer timer;
         intakeMotorBottom.set(speed * Constants.Intake.IntakeSpeed);
     }
 
+
     public void shoot(){
-        var currentTime = timer.get();
+        currentTime = timer.get();
         topShoot(1*Constants.Intake.IntakeSpeed);
         //System.out.println("Start time: " + startRamp);
         //System.out.println("Current time: " + currentTime);
@@ -77,6 +80,7 @@ private Timer timer;
     
     @Override
     public void periodic() {
+        NTmanager.TimerPub.set(currentTime);
 
     }
 
