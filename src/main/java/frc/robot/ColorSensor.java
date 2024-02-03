@@ -67,8 +67,8 @@ public class ColorSensor extends TimedRobot {
     SmartDashboard.putNumber("Proximity", proximity);
 
   }
-  public String returnColor(){
-    return m_colorSensor.getColor();
+  public double returnProximity(){
+    return m_colorSensor.getProximity();
   }
 
   

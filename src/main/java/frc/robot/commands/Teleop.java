@@ -4,7 +4,9 @@ package frc.robot.commands;
 
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.ColorSensor;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooty;
@@ -14,16 +16,19 @@ public class Teleop extends Command {
 
     private Drivetrain m_drive;
     private Shooty m_intake;
+    private ColorSensor m_colorSensor;
     XboxController drive_controller;
     XboxController operator_Controller;
 
-    public Teleop(Drivetrain drive, Shooty intake){
+    public Teleop(Drivetrain drive, Shooty intake, ColorSensor colorSensor){
 
         m_drive = drive;
         addRequirements(m_drive);
 
         m_intake = intake;
         addRequirements(m_intake);
+
+        m_colorSensor = colorSensor;
     }
 
     // Called when the command is initially scheduled.
@@ -38,7 +43,7 @@ public class Teleop extends Command {
     public void execute() {
               
         
-
+        System.out.println("Distance: " + m_colorSensor.returnProximity());
 
         //drive code, no sprinting just get good
         if(drive_controller.getLeftY() >= 0.05 || drive_controller.getLeftY() <= -0.05 || 
