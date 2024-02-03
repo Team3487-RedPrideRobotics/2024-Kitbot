@@ -46,23 +46,24 @@ public class Teleop extends Command {
         System.out.println("Distance: " + m_colorSensor.returnProximity());
 
         //drive code, no sprinting just get good
-        if(drive_controller.getLeftY() >= 0.05 || drive_controller.getLeftY() <= -0.05 || 
-        drive_controller.getRightY() >= 0.05 || drive_controller.getRightY() <= -0.05)
-        {
-            m_drive.TankDrive(drive_controller.getLeftY(), drive_controller.getRightY()); 
+
+        if(drive_controller.getLeftY() >= 0.05 || drive_controller.getLeftY() <= -0.05 || drive_controller.getRightY() >= 0.05 || drive_controller.getRightY() <= -0.05) {
+            m_drive.TankDrive(drive_controller.getLeftY(), drive_controller.getRightY());
+        } else {
+            m_drive.TankDrive(0, 0);
         }
 
 
-
-        //intake code 
-        //right trigger is shoot at max speed
         if(operator_Controller.getRightTriggerAxis() >= 0.01){
-            m_intake.shoot(operator_Controller.getRightTriggerAxis());
-        }
+            m_intake.shoot();
+        } 
+        else if(operator_Controller.getLeftTriggerAxis() >= 0.01){
 
-        //left trigger is intake;
-        if(operator_Controller.getLeftTriggerAxis() >= 0.01){
-            m_intake.intake(-1 * operator_Controller.getLeftTriggerAxis());
+            m_intake.bottomIntake(-1);
+            m_intake.topIntake(-1);
+        } else {
+            m_intake.reset();
+
         }
 
 

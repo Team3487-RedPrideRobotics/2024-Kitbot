@@ -10,12 +10,9 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
 public class Drivetrain extends SubsystemBase {
 
     
-    private Spark left_Back_Motor;
-    private Spark left_Front_Motor;
+    private Spark left_Motor;
 
-
-    private Spark right_Back_Motor;
-    private Spark right_Front_Motor;
+    private Spark right_Motor;
    
 
     private DifferentialDrive differentialDrive;
@@ -25,25 +22,12 @@ public class Drivetrain extends SubsystemBase {
     public Drivetrain() {
 
         left_Back_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
-        //left_Back_Motor.setInverted(Constants.DriveEdits.left_Drive_Inverse);
-
-        //left_Front_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
-        //left_Front_Motor.setInverted(Constants.DriveEdits.left_Drive_Inverse);
-
-        //left_Back_Motor.addFollower(left_Front_Motor);
-        
 
         right_Back_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
         right_Back_Motor.setInverted(Constants.DriveEdits.right_Drive_Inverse);
 
 
-        //right_Front_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
-        //right_Front_Motor.setInverted(Constants.DriveEdits.right_Drive_Inverse);
-
-        //right_Back_Motor.addFollower(right_Front_Motor);
-        
-
-        differentialDrive = new DifferentialDrive(left_Back_Motor, right_Back_Motor);
+        differentialDrive = new DifferentialDrive(left_Motor, right_Motor);
         differentialDrive.setSafetyEnabled(true);
         differentialDrive.setExpiration(0.1);
         differentialDrive.setMaxOutput(1.0);

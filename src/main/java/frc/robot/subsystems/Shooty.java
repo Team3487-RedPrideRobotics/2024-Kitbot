@@ -15,39 +15,75 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.NTmanager;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
-
 
 public class Shooty extends SubsystemBase {
 
 
-private Spark intakeMotorOne;
-//private Spark intakeMotorTwo;
+
+private Spark intakeMotorTop;
+private Spark intakeMotorBottom;
+private double startRamp;
+private Timer timer;
+public static double currentTime = 0;
+
 
     public Shooty() {
-        intakeMotorOne = new Spark(Constants.Intake.intake_Motor_ID);
-        //intakeMotorTwo = new Spark(Constants.Intake.intake_Motor_ID);
-
-        intakeMotorOne.setSafetyEnabled(true);
-        intakeMotorOne.setExpiration(0.1);
+        intakeMotorTop = new Spark(Constants.Intake.intake_Motor_ID_Top);
+        intakeMotorBottom = new Spark(Constants.Intake.intake_Motor_ID_Bottom);
+        timer = new Timer();
+        timer.start();
     }
 
     
-    public void intake(double speed){
-        intakeMotorOne.set(speed * Constants.Intake.IntakeSpeed);
+    public void topIntake(double speed){
+        intakeMotorTop.set(speed * Constants.Intake.IntakeSpeed);
+    }
+    public void bottomIntake(double speed){
+        intakeMotorBottom.set(speed * Constants.Intake.IntakeSpeed);
 
     }
 
-    public void shoot(double speed){
-        intakeMotorOne.set(speed * Constants.Intake.IntakeSpeed);
 
+    public void shoot(){
+        currentTime = timer.get();
+        topShoot(1*Constants.Intake.IntakeSpeed);
+        //System.out.println("Start time: " + startRamp);
+        //System.out.println("Current time: " + currentTime);
+        if(0 == startRamp) {
+            startRamp = currentTime;
+        }
+            
+        if(currentTime - startRamp  >= Constants.Intake.waitingNumber){
+            intakeMotorBottom.set(1*Constants.Intake.IntakeSpeed);
+        }
+    }  
+    
+
+    public void topShoot(double speed){
+        intakeMotorTop.set(speed * Constants.Intake.IntakeSpeed);
     }
+    public void bottomShoot(double speed){
+        intakeMotorBottom.set(-speed * Constants.Intake.IntakeSpeed);
+    }
+
+    public void reset(){
+        startRamp = 0;
+        timer.reset();
+        intakeMotorTop.set(0);
+        intakeMotorBottom.set(0);
+    }
+
+
 
 
     
     @Override
     public void periodic() {
+        NTmanager.TimerPub.set(currentTime);
 
     }
 
