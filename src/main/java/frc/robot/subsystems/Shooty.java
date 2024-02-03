@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
 public class Shooty extends SubsystemBase {
 
 
+
 private Spark intakeMotorTop;
 private Spark intakeMotorBottom;
 private double startRamp;
@@ -43,6 +44,7 @@ public static double currentTime = 0;
     }
     public void bottomIntake(double speed){
         intakeMotorBottom.set(speed * Constants.Intake.IntakeSpeed);
+
     }
 
 
@@ -60,6 +62,7 @@ public static double currentTime = 0;
         }
     }  
     
+
     public void topShoot(double speed){
         intakeMotorTop.set(speed * Constants.Intake.IntakeSpeed);
     }

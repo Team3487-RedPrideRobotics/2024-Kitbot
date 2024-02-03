@@ -21,15 +21,11 @@ public class Drivetrain extends SubsystemBase {
     
     public Drivetrain() {
 
-        left_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
-        left_Motor.setInverted(Constants.DriveEdits.left_Drive_Inverse);
+        left_Back_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
 
-        
+        right_Back_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
+        right_Back_Motor.setInverted(Constants.DriveEdits.right_Drive_Inverse);
 
-        right_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
-        right_Motor.setInverted(Constants.DriveEdits.right_Drive_Inverse);
-
-        
 
         differentialDrive = new DifferentialDrive(left_Motor, right_Motor);
         differentialDrive.setSafetyEnabled(true);
@@ -40,7 +36,7 @@ public class Drivetrain extends SubsystemBase {
     }
 
     public void TankDrive(double leftSpeed, double rightSpeed){
-        differentialDrive.tankDrive(leftSpeed*Constants.DriveEdits.DriveSpeed, rightSpeed*Constants.DriveEdits.DriveSpeed, true);
+        differentialDrive.tankDrive(leftSpeed*Constants.DriveEdits.DriveSpeed, rightSpeed*Constants.DriveEdits.DriveSpeed, false);
     }
 
     @Override
