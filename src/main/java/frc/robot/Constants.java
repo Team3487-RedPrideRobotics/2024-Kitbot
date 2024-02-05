@@ -20,5 +20,6 @@ public class Constants {
         public static boolean right_Drive_Inverse = false;
 
 		public static double DriveSpeed = 1;
+        public static double TurningSpeed = 0.6;
     }
 }

@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 
@@ -12,15 +13,24 @@ public class Drivetrain extends SubsystemBase {
     
     private Spark left_Motor;
 
+<<<<<<< Updated upstream
     private Spark right_Motor;
    
+=======
+
+    private Spark right_Back_Motor;
+    private Spark right_Front_Motor;
+
+    private Timer timer;
+    public int counter = 0;
+
+>>>>>>> Stashed changes
 
     private DifferentialDrive differentialDrive;
 
 
     
     public Drivetrain() {
-
         left_Back_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
 
         right_Back_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
@@ -35,8 +45,18 @@ public class Drivetrain extends SubsystemBase {
 
     }
 
-    public void TankDrive(double leftSpeed, double rightSpeed){
-        differentialDrive.tankDrive(leftSpeed*Constants.DriveEdits.DriveSpeed, rightSpeed*Constants.DriveEdits.DriveSpeed, false);
+    public void arcadeDrive(double leftSpeed, double turning){
+        /* 
+        if(counter == 0){
+            timer.reset();
+            counter++;
+        } else if(timer.get() <= 2.0){
+            differentialDrive.arcadeDrive(-leftSpeed*Constants.DriveEdits.DriveSpeed * timer.get()/2.02, -turning*Constants.DriveEdits.TurningSpeed * timer.get()/2.02);
+        } else if(timer.get() >= 2.0){
+            differentialDrive.arcadeDrive(-leftSpeed*Constants.DriveEdits.DriveSpeed, -turning*Constants.DriveEdits.TurningSpeed);
+        }
+        */
+        differentialDrive.arcadeDrive(-leftSpeed*Constants.DriveEdits.DriveSpeed, -turning*Constants.DriveEdits.TurningSpeed);
     }
 
     @Override
