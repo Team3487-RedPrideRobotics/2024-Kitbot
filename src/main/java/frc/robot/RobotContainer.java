@@ -39,8 +39,8 @@ public class RobotContainer {
     public final Shooty m_shooty = new Shooty();
     public final Drivetrain m_drivetrain = new Drivetrain();
     public final NTmanager m_NTmanager = new NTmanager();
-    //public final ColorSensor m_ColorSensor = new ColorSensor();
-    public final Teleop m_Teleop = new Teleop(m_drivetrain, m_shooty);
+    public final ColorSensor m_ColorSensor = new ColorSensor();
+    public final Teleop m_Teleop = new Teleop(m_drivetrain, m_shooty, m_ColorSensor);
 
 // Joysticks
 private final XboxController operator_Controller = new XboxController(0);
@@ -100,10 +100,6 @@ public XboxController getOperatorController() {
     // The selected command will be run in autonomous
     return m_chooser.getSelected();
   }
-  public Command getTeleopCommand() {
-    return m_Teleop;
-  }
-  
 
 }
 

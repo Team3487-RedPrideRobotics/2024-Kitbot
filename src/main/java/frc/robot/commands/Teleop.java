@@ -20,13 +20,15 @@ public class Teleop extends Command {
     XboxController drive_controller;
     XboxController operator_Controller;
 
-    public Teleop(Drivetrain drive, Shooty intake){
+    public Teleop(Drivetrain drive, Shooty intake, ColorSensor fweoijiowefj){
 
         m_drive = drive;
         addRequirements(m_drive);
 
         m_intake = intake;
         addRequirements(m_intake);
+
+        m_colorSensor = fweoijiowefj;
     }
 
     // Called when the command is initially scheduled.
@@ -41,16 +43,12 @@ public class Teleop extends Command {
     public void execute() {
               
         
-        //System.out.println("Distance: " + m_colorSensor.returnProximity());
+        System.out.println("Distance: " + m_colorSensor.returnProximity());
+        //System.out.println("Color: " + m_colorSensor.returnColor());
+        //System.out.println("Raw Color: " + m_colorSensor.returnRawColor());
 
         //drive code, no sprinting just get good
-<<<<<<< Updated upstream
 
-        if(drive_controller.getLeftY() >= 0.05 || drive_controller.getLeftY() <= -0.05 || drive_controller.getRightY() >= 0.05 || drive_controller.getRightY() <= -0.05) {
-            m_drive.TankDrive(drive_controller.getLeftY(), drive_controller.getRightY());
-        } else {
-            m_drive.TankDrive(0, 0);
-=======
         if(drive_controller.getLeftY() >= 0.05 || drive_controller.getLeftY() <= -0.05 || 
         drive_controller.getRightX() >= 0.05 || drive_controller.getRightX() <= -0.05)
         {
@@ -58,7 +56,6 @@ public class Teleop extends Command {
         } else {
             m_drive.arcadeDrive(0, 0);
             m_drive.counter = 0;
->>>>>>> Stashed changes
         }
 
 

@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 
-//import com.revrobotics.ColorSensorV3;
+import com.revrobotics.ColorSensorV3;
+import com.revrobotics.ColorSensorV3.RawColor;
 
 public class ColorSensor extends TimedRobot {
   /**
@@ -25,7 +26,7 @@ public class ColorSensor extends TimedRobot {
    * parameter. The device will be automatically initialized with default 
    * parameters.
    */
-  //private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+  private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
 
   @Override
   public void robotPeriodic() {
@@ -67,9 +68,14 @@ public class ColorSensor extends TimedRobot {
     //SmartDashboard.putNumber("Proximity", proximity);
 
   }
-  //public double returnProximity(){
-    //return m_colorSensor.getProximity();
-  //}
+  public double returnProximity(){
+    return m_colorSensor.getProximity();
+  }
+  public Color returnColor(){
+    return m_colorSensor.getColor();
+  }
+  public RawColor returnRawColor(){
+    return m_colorSensor.getRawColor();
+  }
 
-  
 }

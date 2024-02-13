@@ -13,28 +13,22 @@ public class Drivetrain extends SubsystemBase {
     
     private Spark left_Motor;
 
-<<<<<<< Updated upstream
-    private Spark right_Motor;
-   
-=======
 
-    private Spark right_Back_Motor;
-    private Spark right_Front_Motor;
+    private Spark right_Motor;
 
     private Timer timer;
     public int counter = 0;
 
->>>>>>> Stashed changes
 
     private DifferentialDrive differentialDrive;
 
 
     
     public Drivetrain() {
-        left_Back_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
+        left_Motor = new Spark(Constants.DriveConstants.left_Drive_ID);
 
-        right_Back_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
-        right_Back_Motor.setInverted(Constants.DriveEdits.right_Drive_Inverse);
+        right_Motor = new Spark(Constants.DriveConstants.right_Drive_ID);
+        right_Motor.setInverted(Constants.DriveEdits.right_Drive_Inverse);
 
 
         differentialDrive = new DifferentialDrive(left_Motor, right_Motor);
