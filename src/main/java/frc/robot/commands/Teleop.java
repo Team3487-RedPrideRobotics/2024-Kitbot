@@ -6,7 +6,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.ColorSensor;
+//import frc.robot.ColorSensor;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooty;
@@ -16,11 +16,11 @@ public class Teleop extends Command {
 
     private Drivetrain m_drive;
     private Shooty m_intake;
-    private ColorSensor m_colorSensor;
+    //private ColorSensor m_colorSensor;
     XboxController drive_controller;
     XboxController operator_Controller;
 
-    public Teleop(Drivetrain drive, Shooty intake, ColorSensor fweoijiowefj){
+    public Teleop(Drivetrain drive, Shooty intake){
 
         m_drive = drive;
         addRequirements(m_drive);
@@ -28,7 +28,7 @@ public class Teleop extends Command {
         m_intake = intake;
         addRequirements(m_intake);
 
-        m_colorSensor = fweoijiowefj;
+        //m_colorSensor = fweoijiowefj;
     }
 
     // Called when the command is initially scheduled.
@@ -43,7 +43,7 @@ public class Teleop extends Command {
     public void execute() {
               
         
-        System.out.println("Distance: " + m_colorSensor.returnProximity());
+        //System.out.println("Distance: " + m_colorSensor.returnProximity());
         //System.out.println("Color: " + m_colorSensor.returnColor());
         //System.out.println("Raw Color: " + m_colorSensor.returnRawColor());
 
@@ -55,7 +55,6 @@ public class Teleop extends Command {
             m_drive.arcadeDrive(drive_controller.getLeftY(), drive_controller.getRightX()); 
         } else {
             m_drive.arcadeDrive(0, 0);
-            m_drive.counter = 0;
         }
 
 

@@ -39,7 +39,7 @@ public class Drivetrain extends SubsystemBase {
 
     }
 
-    public void arcadeDrive(double leftSpeed, double turning){
+    public void arcadeDrive(double turning, double leftSpeed){
         /* 
         if(counter == 0){
             timer.reset();
@@ -50,7 +50,7 @@ public class Drivetrain extends SubsystemBase {
             differentialDrive.arcadeDrive(-leftSpeed*Constants.DriveEdits.DriveSpeed, -turning*Constants.DriveEdits.TurningSpeed);
         }
         */
-        differentialDrive.arcadeDrive(-leftSpeed*Constants.DriveEdits.DriveSpeed, -turning*Constants.DriveEdits.TurningSpeed);
+        differentialDrive.arcadeDrive(leftSpeed*Constants.DriveEdits.TurningSpeed, turning*Constants.DriveEdits.DriveSpeed);
     }
 
     @Override

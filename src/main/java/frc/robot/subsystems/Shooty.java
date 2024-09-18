@@ -50,10 +50,9 @@ public static double currentTime = 0;
 
     public void shoot(){
         currentTime = timer.get();
-        topShoot(1*Constants.Intake.IntakeSpeed);
-        //System.out.println("Start time: " + startRamp);
-        //System.out.println("Current time: " + currentTime);
-        if(0 == startRamp) {
+        topShoot(1);
+        
+        if(startRamp == 0) {
             startRamp = currentTime;
         }
             
@@ -64,6 +63,7 @@ public static double currentTime = 0;
     
 
     public void topShoot(double speed){
+        System.out.println("poggers" + speed * Constants.Intake.IntakeSpeed);
         intakeMotorTop.set(speed * Constants.Intake.IntakeSpeed);
     }
     public void bottomShoot(double speed){
