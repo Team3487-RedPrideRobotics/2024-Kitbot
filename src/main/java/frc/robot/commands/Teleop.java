@@ -35,7 +35,6 @@ public class Teleop extends Command {
     @Override
     public void initialize() {
         drive_controller = RobotContainer.getInstance().getDriveController();
-        operator_Controller = RobotContainer.getInstance().getOperatorController();
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -52,16 +51,16 @@ public class Teleop extends Command {
         if(drive_controller.getLeftY() >= 0.05 || drive_controller.getLeftY() <= -0.05 || 
         drive_controller.getRightX() >= 0.05 || drive_controller.getRightX() <= -0.05)
         {
-            m_drive.arcadeDrive(drive_controller.getLeftY(), drive_controller.getRightX()); 
+            m_drive.arcadeDrive(drive_controller.getLeftY() * 0.6, drive_controller.getRightX()); 
         } else {
             m_drive.arcadeDrive(0, 0);
         }
 
 
-        if(operator_Controller.getRightTriggerAxis() >= 0.01){
+        if(drive_controller.getRightTriggerAxis() >= 0.01){
             m_intake.shoot();
         } 
-        else if(operator_Controller.getLeftTriggerAxis() >= 0.01){
+        else if(drive_controller.getLeftTriggerAxis() >= 0.01){
 
             m_intake.bottomIntake(-1);
             m_intake.topIntake(-1);
